@@ -25,4 +25,4 @@ class MessageAdmin(admin.ModelAdmin):
 
 @admin.register(Statistic)
 class AttemptAdmin(admin.ModelAdmin):
-   list_display = ("time", "status", "answer",)
+   list_display = ("last_try", "status", "answer",)
