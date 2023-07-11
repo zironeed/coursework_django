@@ -8,7 +8,11 @@
 </div>
 
 <div class="col-6 mb-5">
-    <a href="{% url 'mailingapp:client_create' %}" class="w-30 btn btn-lg btn-primary">Создать</a>
+    <a href="{% url 'mailingapp:client_create' %}" class="w-30 btn btn-lg btn-primary">Создать пользователя</a>
+</div>
+
+<div class="col-6 mb-5">
+    <a href="{% url 'mailingapp:mailingsettings_create' %}" class="w-30 btn btn-lg btn-primary">Создать рассылку</a>
 </div>
 
 <div class="row text-center">
@@ -19,7 +23,7 @@
                 <h4 class="my-0 font-weight-normal">Пользователи</h4>
             </div>
             <div class="card-body">
-                <a href="{% url 'mailingapp:clients' product.pk %}"
+                <a href="{% url 'mailingapp:clients'%}"
                    class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
             </div>
         </div>
@@ -31,7 +35,7 @@
                 <h4 class="my-0 font-weight-normal">Рассылки</h4>
             </div>
             <div class="card-body">
-                <a href="{% url 'mailingapp:mailings' product.pk %}"
+                <a href="{% url 'mailingapp:mailings'%}"
                    class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
             </div>
         </div>
