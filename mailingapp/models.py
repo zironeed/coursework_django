@@ -34,8 +34,9 @@ class MailingSettings(models.Model):
     status = models.CharField(choices=MailingSettingsStatus.choices, verbose_name='Статус рассылки',
                               default=MailingSettingsStatus.Created)
     message = models.ForeignKey('Message', on_delete=models.SET_NULL, **NULLABLE, verbose_name='Письмо')
-    clients = models.ManyToManyField('Clients', verbose_name='Клиент')
-    statistic = models.OneToOneField('Statistic', on_delete=models.CASCADE, **NULLABLE, default=None, verbose_name='Статистика')
+    client = models.ManyToManyField('Client', verbose_name='Клиент')
+    statistic = models.OneToOneField('Statistic', on_delete=models.CASCADE, **NULLABLE, default=None,
+                                     verbose_name='Статистика')
 
     def __str__(self):
         return self.title
