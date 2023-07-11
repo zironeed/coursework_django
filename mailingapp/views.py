@@ -1,8 +1,11 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, DetailView
+from datetime import datetime, timezone
+
+import pytz
 
 from mailingapp.utils import sendmail
-from mailingapp.models import Client, Message, MailingSettings
+from mailingapp.models import Client, Message, MailingSettings, Statistic
 from mailingapp.forms import ClientCreateForm, MessageCreateForm, MailingSettingsCreateForm, StatisticForm
 
 
@@ -99,13 +102,37 @@ class MailingSettingsCreateView(CreateView):
         return reverse_lazy('mailingapp:mailings')
 
     def form_valid(self, form):
-        print("---------------------------------------------------------")
-        self.object = form.save()
-        send_message = self.object.message.get_info()
 
-        for client in self.object.clients.all():
-            print(client.email)
-            sendmail(client.email, send_message[0], send_message[1])
+        # Create default data statistic
+        current_mailing = self.object
+        print(current_mailing)
+        print()
+        self.object = form.save()
+
+        Statistic.objects.create(mailing_id=self.object.pk)
+        schedule_mailing_time = self.object.time
+        current_time = datetime.now().time()
+        print(schedule_mailing_time, current_time)
+
+        if schedule_mailing_time <= current_time:
+            send_message = self.object.message.get_info()
+            print("!SEND MESSAGE!")
+
+            for client in self.object.clients.all():
+
+                print(client.email)
+                print(client)
+                sendmail(client.email, send_message[0], send_message[1])
+
+            current_time = datetime.now(pytz.timezone('Europe/Moscow'))
+            print(current_time)
+
+            wu = Statistic.objects.get(mailing_id=self.object.pk)
+            wu.status = "FINISHED"
+            wu.mail_answer = "OK"
+            wu.time = datetime.now(pytz.timezone('Europe/Moscow'))
+            wu.save()
+
         return super().form_valid(form)
 
 
@@ -116,6 +143,23 @@ class MailingSettingsListView(ListView):
         context = super().get_context_data(**kwargs)
         context["Title"] = "MailingSettings"
         context["MailingSettings"] = MailingSettings.objects.all()
+        return context
+
+
+class MailingSettingsDetailView(DetailView):
+    model = MailingSettings
+
+    def get_object(self, queryset=None):
+        one_mailing = super().get_object()
+        return one_mailing
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["Title"] = "Mailing Full Information"
+        current_object = self.get_object()
+        context["Mailing"] = current_object
+        context["Statistic"] = current_object.get_statistic[0]
+        print(current_object.get_statistic[0])
         return context
 
 
