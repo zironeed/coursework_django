@@ -7,17 +7,19 @@
     <p class="lead">Skyspam - лучший сервис по спаму!</p>
 </div>
 
-<div class="col-6 mb-5">
-    <a href="{% url 'mailingapp:client_create' %}" class="w-30 btn btn-lg btn-primary">Создать пользователя</a>
-</div>
+<div class="row text-center">
+    <div class="col-md-6 mb-5">
+        <a href="{% url 'mailingapp:client_create' %}" class="w-100 btn btn-lg btn-primary">Создать пользователя</a>
+    </div>
 
-<div class="col-6 mb-5">
-    <a href="{% url 'mailingapp:mailingsettings_create' %}" class="w-30 btn btn-lg btn-primary">Создать рассылку</a>
+    <div class="col-md-6 mb-5">
+        <a href="{% url 'mailingapp:mailingsettings_create' %}" class="w-100 btn btn-lg btn-primary">Создать рассылку</a>
+    </div>
 </div>
 
 <div class="row text-center">
 
-    <div class="col-4">
+    <div class="col-md-12">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Пользователи</h4>
@@ -29,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-12">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">Рассылки</h4>
