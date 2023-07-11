@@ -1,0 +1,33 @@
+{% extends 'mailingapp/base.html' %}
+
+{% block content %}
+
+<div class="col-6 mb-5">
+    <a href="{% url 'mailingapp:message_create' %}" class="w-30 btn btn-lg btn-primary">Создать</a>
+</div>
+
+<div class="row text-center">
+
+    {% for message in message_list %}
+
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Письмо</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>{{ message.title }}</li>
+                    <li>{{ message.body }}</li>
+                </ul>
+                <a href="{% url 'mailingapp:message_delete' message.pk %}"
+                   class="w-100 btn btn-lg btn-outline-warning">Удалить</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

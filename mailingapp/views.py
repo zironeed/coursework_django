@@ -7,6 +7,7 @@ from mailingapp.models import Client, Message, MailingSettings
 
 class MainListView(ListView):
     model = Message
+    template_name = "mailingapp/main.html"
 
 
 class ClientCreateView(CreateView):

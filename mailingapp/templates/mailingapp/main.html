@@ -1,0 +1,42 @@
+{% extends 'mailingapp/base.html' %}
+
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Skyspam</h1>
+    <p class="lead">Skyspam - лучший сервис по спаму!</p>
+</div>
+
+<div class="col-6 mb-5">
+    <a href="{% url 'mailingapp:client_create' %}" class="w-30 btn btn-lg btn-primary">Создать</a>
+</div>
+
+<div class="row text-center">
+
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Пользователи</h4>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'mailingapp:clients' product.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Рассылки</h4>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'mailingapp:mailings' product.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
