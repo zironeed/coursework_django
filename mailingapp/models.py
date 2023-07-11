@@ -29,7 +29,7 @@ class MailingSettings(models.Model):
         Monthly = 'Месяц'
 
     title = models.CharField(max_length=100, verbose_name='Имя рассылки')
-    time = models.DateTimeField(default=datetime.datetime(2023, 1, 1), verbose_name='Время рассылки')
+    time = models.TimeField(verbose_name="Начало рассылки", default=datetime.datetime.now().time())
     frequency = models.CharField(choices=MailingSettingsFrequency.choices, verbose_name='Частота рассылки')
     status = models.CharField(choices=MailingSettingsStatus.choices, verbose_name='Статус рассылки',
                               default=MailingSettingsStatus.Created)
@@ -45,6 +45,10 @@ class MailingSettings(models.Model):
         verbose_name = 'Рассылка'
         verbose_name_plural = 'Рассылки'
 
+    @property
+    def get_statistic(self):
+        return self.statistic_of_mailing.all()
+
 
 class Message(models.Model):
     title = models.CharField(max_length=100, verbose_name='Тема письма')
@@ -57,6 +61,9 @@ class Message(models.Model):
         verbose_name = 'Письмо'
         verbose_name_plural = 'Письма'
 
+    def get_info(self):
+        return self.title, self.body
+
 
 class Statistic(models.Model):
 
@@ -64,6 +71,8 @@ class Statistic(models.Model):
         Finished = 'Выполнено'
         Created = 'Создано'
 
+    mailing = models.ForeignKey("MailingSettings", on_delete=models.CASCADE, related_name="statistic_of_mailing",
+                                verbose_name='Рассылка')
     last_try = models.DateTimeField(verbose_name='Последняя попытка', **NULLABLE)
     status = models.CharField(choices=StatisticStatus.choices, verbose_name='Статус попытки',
                               default=StatisticStatus.Created)
