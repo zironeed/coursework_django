@@ -35,8 +35,8 @@ class MessageCreateForm(StyleFormMixin, forms.ModelForm):
         fields = ["title", "body"]
 
 
-class StatisticForm(forms.ModelForm):
+class StatisticForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Statistic
-        fields = ["status", "answer"]
+        fields = ["status", "answer", "last_try"]
