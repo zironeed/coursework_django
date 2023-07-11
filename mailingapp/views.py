@@ -3,7 +3,7 @@ from django.views.generic import CreateView, ListView, DeleteView
 
 from mailingapp.utils import sendmail
 from mailingapp.models import Client, Message, MailingSettings
-from mailingapp.forms import ClientCreateForm
+from mailingapp.forms import ClientCreateForm, MessageCreateForm, MailingSettingsCreateForm, StatisticForm
 
 
 class MainListView(ListView):
@@ -53,6 +53,7 @@ class ClientDeleteView(DeleteView):
 
 class MessageCreateView(CreateView):
     model = Message
+    form_class = MessageCreateForm
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -87,6 +88,7 @@ class MessageDeleteView(DeleteView):
 
 class MailingSettingsCreateView(CreateView):
     model = MailingSettings
+    form_class = MailingSettingsCreateForm
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
