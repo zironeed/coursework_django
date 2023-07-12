@@ -72,7 +72,7 @@ class Statistic(models.Model):
         Created = 'Создано'
 
     mailing = models.ForeignKey("MailingSettings", on_delete=models.CASCADE, related_name="statistic_of_mailing",
-                                verbose_name='Рассылка')
+                                verbose_name='Рассылка', **NULLABLE)
     last_try = models.DateTimeField(verbose_name='Последняя попытка', **NULLABLE)
     status = models.CharField(choices=StatisticStatus.choices, verbose_name='Статус попытки',
                               default=StatisticStatus.Created)
