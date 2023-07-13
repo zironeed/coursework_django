@@ -39,4 +39,4 @@ class StatisticForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Statistic
-        fields = ["status", "answer", "last_try"]
+        fields = ["time", "status", "mail_answer"]
