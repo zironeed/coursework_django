@@ -1,0 +1,10 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:blog'%}" role="button">Назад</a>
+<form method="post" action="">
+      {%csrf_token%}
+      Не отображать запись "{{object.name}}"?
+      <input type="submit" class="btn btn-outline-danger" value="Подтвердить">
+</form>
+{% endblock %}

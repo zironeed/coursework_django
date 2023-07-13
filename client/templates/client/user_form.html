@@ -1,0 +1,22 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:homepage'%}" role="button">Назад</a>
+      <div class="col-6">
+            <form method="post" enctype=multipart/form-data>
+            <div class="card">
+                  <div class="card-header">
+                        Профиль
+                  </div>
+                  <div class="card-body">
+                        <form method="post">
+                              {%csrf_token%}
+                              {{form.as_p}}
+                              <input type="submit" class="btn btn-outline-dark" value="Сохранить">
+                        </form>
+                  </div>
+            </div>
+            <a href="{%url 'client:generate_new_password'%}" class="btn btn-outline-danger">Сгенерировать пароль</a>
+            <a href="{%url 'client:profile_delete' pk=user.pk%}" class="btn btn-outline-danger">Удалить аккаунт</a>
+      </div>
+{% endblock %}

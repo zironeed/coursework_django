@@ -1,0 +1,32 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:homepage'%}" role="button">Назад</a>
+      <div class="col-6">
+            <form method="post" enctype=multipart/form-data>
+            <div class="card">
+                  <div class="card-header">
+                        Настройки рассылки
+                  </div>
+                  <div class="card-body">
+                              {%csrf_token%}
+                              {{form.as_p}}
+                  </div>
+            </div>
+      </div>
+      <div class="col-6">
+            <div class="card">
+                  <div class="card-header">
+                        Сообщение рассылки
+                  </div>
+                  <div class="card-body">
+                              {{formset.management_form}}
+                              {% for form in formset.forms %}
+                                    {{form.as_p}}
+                              {% endfor %}
+                  </div>
+                  <input type="submit" class="btn btn-outline-dark" value="{% if object %}Сохранить изменения{% else %}Запустить рассылку{% endif %}">
+            </div>
+            </form>
+      </div>
+{% endblock %}

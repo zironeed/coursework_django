@@ -1,0 +1,9 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<form method="post">
+      {%csrf_token%}
+      Удалить профиль?
+      <input type="submit" class="btn btn-outline-danger" value="Подтвердить" >
+</form>
+{% endblock %}

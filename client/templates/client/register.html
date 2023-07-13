@@ -1,0 +1,27 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:homepage'%}" role="button">Назад</a>
+      <div class="col-6">
+            <form method="post" enctype=multipart/form-data>
+            <div class="card">
+                  <div class="card-header">
+                        Регистрация
+                  </div>
+                  {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages|slice:":1" %}
+                              <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                  {% endif %}
+                  <div class="card-body">
+                        <form method="post">
+                              {%csrf_token%}
+                              {{form.as_p}}
+                              <input type="submit" class="btn btn-outline-dark" value="Регистрация">
+                        </form>
+                  </div>
+            </div>
+      </div>
+{% endblock %}

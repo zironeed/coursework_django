@@ -1,0 +1,65 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<header>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal text-body-emphasis">Рассылка</h1>
+      <p class="fs-5 text-body-secondary">Запустите рассылку для ваших клиентов вместе с нашим сервисом</p>
+    </div>
+</header>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check" viewBox="0 0 16 16">
+    <title>Check</title>
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+</svg>
+
+<div class="container py-3">
+
+  <main>
+
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Рассылка стандарт</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Бесплатно<small class="text-body-secondary fw-light"></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Все письма дойдут до конечных пользователей</li>
+              <li>Поддержка 24/7</li>
+              <li>Возможность отправлять ежедневно, еженедельно и ежемесячно</li>
+            </ul>
+            <a href="{%url 'mailing:create'%}" type="button" class="w-100 btn btn-lg btn-primary">Запустить рассылку</a>
+          </div>
+        </div>
+      </div>
+
+
+    <h2 class="display-6 text-center mb-4">Статистика</h2>
+
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>Количество рассылок</th>
+            <th>Количество активных рассылок</th>
+            <th>количество уникальных клиентов для рассылок</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ mails }}</td>
+            <td>{{ active }}</td>
+            <td>{{ clients }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% for article in random_article %}
+        <h1 class="display-4 fw-normal">{{article.name}}</h1>
+        <img src="/img/{{ article.image }}"class="img-fluid"><rect width="20%" height="20%"></rect>
+        <p class="lead fw-normal">{{article.post|truncatechars:20}}.</p>
+        <a class="btn btn-outline-secondary" href="blog/{{article.slug}}">Читать полностью</a>
+      {% endfor %}
+  </main>
+{% endblock %}

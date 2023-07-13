@@ -1,0 +1,10 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:blog'%}" role="button">Назад</a>
+<form enctype="multipart/form-data" method="post">
+      {%csrf_token%}
+      {{form.as_p}}
+      <input type="submit" class="btn btn-outline-dark" value="{% if object %}Сохранить{% else %}Опубликовать{% endif %}">
+</form>
+{% endblock %}

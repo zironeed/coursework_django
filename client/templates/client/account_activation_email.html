@@ -1,0 +1,7 @@
+{% autoescape off %}
+Привет,
+
+Пожалуйста, кликните по ссылке ниже для завершения регистрации:
+
+http://{{ domain }}{% url 'client:activate' uidb64=uid token=token %}
+{% endautoescape %}

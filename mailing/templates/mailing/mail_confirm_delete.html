@@ -1,0 +1,10 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:homepage'%}" role="button">Назад</a>
+<form method="post">
+      {%csrf_token%}
+      Удалить рассылку с темой "{{object.mailing_subject}}"?
+      <input type="submit" class="btn btn-outline-danger" value="Подтвердить">
+</form>
+{% endblock %}

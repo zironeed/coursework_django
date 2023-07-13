@@ -1,0 +1,28 @@
+{% extends 'mailing/base.html' %}
+{%load static%}
+
+{% block content %}
+<main>
+  {{title}}
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+    {% for object in object_list %}
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">{{object.name}}</h1>
+      <img src="{{ MEDIA_URL }}/img/{{ object.image }}" class="img-fluid"><rect width="20%" height="20%"></rect>
+      <p class="lead fw-normal">{{object.post|truncatechars:20}}.</p>
+      <a class="btn btn-outline-secondary" href="{{object.slug}}">Читать полностью</a>
+      {% if user.status_type == 'CONTENT_MANAGER' %}
+        <a class="btn btn-outline-secondary" href="{%url 'mailing:blog_update' slug=object.slug %}">Редактировать</a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <form method="POST">
+  {% csrf_token %}
+    <div class="mb-sm-3">
+      <a href="{%url 'mailing:blog_create'%}" class="btn btn-outline-secondary"> Написать статью</a>
+      </div>
+  </form>
+</main>
+{% include "mailing/include/pagination.html" %}
+{% endblock %}
