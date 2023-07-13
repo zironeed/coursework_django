@@ -11,7 +11,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(MailingSettings)
 class MailingSettings(admin.ModelAdmin):
-    list_display = ("title", "time", "frequency", "status", "statistic")
+    list_display = ("title", "time", "frequency", "status", "is_published")
     list_filter = ("status",)
     filter_horizontal = ["client"]
 
@@ -25,4 +25,4 @@ class MessageAdmin(admin.ModelAdmin):
 
 @admin.register(Statistic)
 class AttemptAdmin(admin.ModelAdmin):
-   list_display = ("last_try", "status", "answer",)
+   list_display = ("time", "status", "mail_answer",)
