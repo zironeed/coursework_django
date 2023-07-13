@@ -8,7 +8,7 @@
 
 <div class="row text-center">
 
-    {% for mailingsettings in mailingsettings_list %}
+    {% for MailingSettings in mailingsettings_list %}
 
     <div class="col-4">
         <div class="card mb-4 box-shadow">
@@ -17,13 +17,17 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>{{ mailingsettings.pk }}</li>
-                    <li>{{ mailingsettings.title }}</li>
-                    <li>{{ mailingsettings.time }}</li>
-                    <li>{{ mailingsettings.frequency }}</li>
-                    <li>{{ mailingsettings.status }}</li>
-                    <li>{{ mailingsettings.statistic }}</li>
+                    <li>{{ MailingSettings.pk }}</li>
+                    <li>{{ MailingSettings.title }}</li>
+                    <li>{{ MailingSettings.time }}</li>
+                    <li>{{ MailingSettings.frequency }}</li>
+                    <li>{{ MailingSettings.status }}</li>
+                    <li>{{ MailingSettings.statistic }}</li>
                 </ul>
+                <a href="{% url 'mailingapp:mailingsettings_card' MailingSettings.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+                <a href="{% url 'mailingapp:mailingsettings_update' MailingSettings.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Изменить</a>
                 <a href="{% url 'mailingapp:mailingsettings_delete' mailingsettings.pk %}"
                    class="w-100 btn btn-lg btn-outline-warning">Удалить</a>
             </div>

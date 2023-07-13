@@ -8,7 +8,7 @@
 
 <div class="row text-center">
 
-    {% for message in message_list %}
+    {% for Message in message_list %}
 
     <div class="col-4">
         <div class="card mb-4 box-shadow">
@@ -20,6 +20,10 @@
                     <li>{{ message.title }}</li>
                     <li>{{ message.body }}</li>
                 </ul>
+                <a href="{% url 'mailingapp:message_card' Message.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+                <a href="{% url 'mailingapp:message_update' Message.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Изменить</a>
                 <a href="{% url 'mailingapp:message_delete' message.pk %}"
                    class="w-100 btn btn-lg btn-outline-warning">Удалить</a>
             </div>

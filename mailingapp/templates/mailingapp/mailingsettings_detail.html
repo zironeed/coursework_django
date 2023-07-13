@@ -1,0 +1,22 @@
+{% extends 'mailingapp/base.html' %}
+
+{% block content %}
+
+<li>Title: {{ MailingSettings.title }}</li>
+<li>Owner: {{ MailingSettings.owner|default:"No owner." }}</li>
+<li>Time: {{ MailingSettings.time }}</li>
+<li>Frequency: {{ MailingSettings.frequency }}</li>
+<li>Message theme: {{ MailingSettings.message.title }}</li>
+<li>Message body: {{ MailingSettings.message.body }}</li>
+<li>Is Published: {{ MailingSettings.is_published }}</li>
+<br>
+<h5> Clients: </h5>
+{% for client in MailingSettings.clients.all %}
+<li>{{ client }}</li>
+{%  endfor %}
+<br>
+<h5>Last Statistics:</h5>
+{% for i in Statistic %}
+<p>{{ i }} </p>
+{% endfor%}
+{% endblock %}

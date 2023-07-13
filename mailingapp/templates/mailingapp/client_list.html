@@ -8,7 +8,7 @@
 
 <div class="row text-center">
 
-    {% for client in client_list %}
+    {% for Client in client_list %}
 
     <div class="col-4">
         <div class="card mb-4 box-shadow">
@@ -17,10 +17,14 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>{{ client.full_name }}</li>
-                    <li>{{ client.email }}</li>
-                    <li>{{ client.comment }}</li>
+                    <li>{{ Client.full_name }}</li>
+                    <li>{{ Client.email }}</li>
+                    <li>{{ Client.comment }}</li>
                 </ul>
+                <a href="{% url 'mailingapp:client_card' client.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Подробнее</a>
+                <a href="{% url 'mailingapp:client_update' client.pk %}"
+                   class="w-100 btn btn-lg btn-outline-primary">Изменить</a>
                 <a href="{% url 'mailingapp:client_delete' client.pk %}"
                    class="w-100 btn btn-lg btn-outline-warning">Удалить</a>
             </div>

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
-                        <p>Хотите удалить пользователя {{ client.full_name }}?</p>
+                        <p>Хотите удалить пользователя {{ Client.full_name }}?</p>
                         <button type="submit" class="btn btn-success">Подтвердить</button>
                         <a href="{% url 'mailingapp:clients' %}" class="btn btn-warning">Отмена</a>
                     </form>
