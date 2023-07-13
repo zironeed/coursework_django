@@ -1,0 +1,12 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:blog'%}" role="button">Назад</a>
+<p><strong>{{object.name}}</strong></p>
+  <img src="/img/{{ object.image }}">
+<p><em>Просмотров статьи: {{object.total_views}}</em></p>
+<p><em>{{object.post}}</em></p>
+{% if user.status_type == 'CONTENT_MANAGER' %}
+<a href="{%url 'mailing:blog_delete' slug=object.slug%}" class="btn btn-outline-danger">Удалить статью</a>
+{% endif %}
+{% endblock %}

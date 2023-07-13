@@ -1,9 +1,0 @@
-{% extends 'mailingapp/base.html' %}
-
-{% block content %}
-
-<li>Title: {{ Message.title }}</li>
-<li>Body: {{ Message.body }}</li>
-<li>Owner: {{ Message.owner|default:"No owner." }}</li>
-
-{% endblock %}

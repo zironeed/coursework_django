@@ -1,0 +1,23 @@
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+        <img src="/img/1f412.svg" height="80px" width="80px"/>
+        <span class="fs-4">Сервис Skychimp</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:homepage' %}">Главная</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:blog' %}">Блог</a>
+        {% if user.is_authenticated %}
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'client:profile' %}">Профиль</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:mailing' %}">Мои рассылки</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:create'%}">Создать рассылку</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:mailing_report' %}">Отчеты по рассылкам</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'mailing:users_to_mail' %}">Добавить почту для рассылки</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'client:logout' %}">Выйти</a>
+        {% else %}
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'client:login' %}">Войти</a>
+          <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{%url 'client:register' %}">Регистрация</a>
+        {% endif %}
+      </nav>
+    </div>

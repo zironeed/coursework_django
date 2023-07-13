@@ -1,0 +1,19 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'mailing:homepage'%}" role="button">Назад</a>
+      <div class="col-6">
+            <form method="post" enctype=multipart/form-data>
+            <div class="card">
+                  <div class="card-header">
+                        Добавление клиента
+                  </div>
+                  <div class="card-body">
+                              {%csrf_token%}
+                              {{form.as_p}}
+                  </div>
+                <input type="submit" class="btn btn-outline-dark" value="Сохранить">
+            </div>
+            </form>
+      </div>
+{% endblock %}
