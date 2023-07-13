@@ -1,0 +1,74 @@
+[
+  {
+    "model": "mailingapp.client",
+    "pk": 1,
+    "fields": {
+      "full_name": "Test client.",
+      "comment": "This is test client.",
+      "email": "zironeed@gmail.com",
+      "owner": 3
+    }
+  },
+  {
+    "model": "mailingapp.message",
+    "pk": 1,
+    "fields": {
+      "title": "Template 1.",
+      "body": "Test message.",
+      "owner": 3
+    }
+  },
+  {
+    "model": "mailingapp.message",
+    "pk": 2,
+    "fields": {
+      "title": "Template 2.",
+      "body": "Test message!",
+      "owner": 3
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+      "title": "Blog 1",
+      "plot": "This is blog.\r\nInformation about something.",
+      "image": "images/pic_1.jpg",
+      "views": 7,
+      "date": "2023-07-08"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+      "title": "Blog 2",
+      "plot": "This is blog.\r\nInformation about something.",
+      "image": "images/pic_2.jpg",
+      "views": 6,
+      "date": "2023-07-08"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 3,
+    "fields": {
+      "title": "Blog 3",
+      "plot": "This is blog.\r\nInformation about something.",
+      "image": "images/pic_3.jpg",
+      "views": 7,
+      "date": "2023-07-08"
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 4,
+    "fields": {
+      "title": "Blog 4",
+      "plot": "This is blog.\r\nInformation about something.",
+      "image": "images/pic_4.jpg",
+      "views": 4,
+      "date": "2023-07-08"
+    }
+  }
+]
